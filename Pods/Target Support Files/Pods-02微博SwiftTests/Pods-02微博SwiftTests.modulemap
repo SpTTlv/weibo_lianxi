@@ -1,0 +1,6 @@
+framework module Pods_02__SwiftTests {
+  umbrella header "Pods-02微博SwiftTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
