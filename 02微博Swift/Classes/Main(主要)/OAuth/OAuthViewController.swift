@@ -19,13 +19,9 @@ class OAuthViewController: UIViewController {
         super.viewDidLoad()
 
         setupNavigationBar()
-    
         
-        
-//        webView.loadRequest(URLRequest: (URL : NSURL(string:"http://www.baidu.com"))
-        
-        let request : NSURLRequest = NSURLRequest(url: NSURL(string:"http://www.baidu.com") as! URL)
-        webView.loadRequest(request as URLRequest)
+        //加载网页
+        loadPage()
         
     }
 
@@ -35,6 +31,13 @@ class OAuthViewController: UIViewController {
 
 // MARK:- 设置UI界面
 extension OAuthViewController{
+    
+    
+    func loadPage() {
+        
+        let request : NSURLRequest = NSURLRequest(url: NSURL(string:"https://api.weibo.com/oauth2/authorize?client_id=\(client_id)&redirect_uri=\(redirect_uri)") as! URL)
+        webView.loadRequest(request as URLRequest)
+    }
     
     
     func setupNavigationBar() {
@@ -59,11 +62,8 @@ extension OAuthViewController{
     }
     
     func fillItemClick() {
-        print("fillItemClick填充")
         SVProgressHUD.dismiss()
-        
-        
-        let jsCode = "document.getElementsByClassName('s_ipt nobg_s_fm_hover')[0].value = '点击了填充按钮'"
+        let jsCode = "document.getElementById('userId').value='13121530018';document.getElementById('passwd').value='miku003';"
         webView.stringByEvaluatingJavaScript(from: jsCode)
     }
     
@@ -84,6 +84,80 @@ extension OAuthViewController :UIWebViewDelegate{
     func webView(_ webView: UIWebView, didFailLoadWithError error: Error) {
         SVProgressHUD.dismiss()
     }
+    //是否允许webView加载
+    func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebViewNavigationType) -> Bool {
+        
+        guard let url = request.url else {
+            return true
+        }
+        let urlString = url.absoluteString
+        
+        guard urlString.contains("code=") else {
+            return true
+        }
+        
+        let code = urlString.components(separatedBy: "code=").last!
+        
+        NetWorkTools.shareInstance.requestWeiboData(code: code) { (result, error) in
+
+            if error != nil{
+                XL_Log(error)
+            }else{
+
+                guard let accountDict = result else{
+                    XL_Log("没有数据")
+                    return
+                }
+                //将字典转成模型
+                let account = UserAccount(dict: accountDict)
+                
+                //请求用户信息
+                self.loadUserInfo(account: account)
+            }
+        }
+        return false
+    }
+    //请求用户信息
+    func loadUserInfo(account: UserAccount) {
+        
+        guard let accessToken = account.access_token else {
+            return
+        }
+        guard let uid = account.uid else {
+            return
+        }
+        //发送网络请求
+        NetWorkTools.shareInstance.requestUserInfo(access_token: accessToken, uid: uid) { (result, error) in
+            
+            //错误校验
+            if error != nil{
+                XL_Log(error)
+                return
+            }
+            
+            guard let userInfoDict = result else{
+                return
+            }
+            
+            account.screen_name = userInfoDict["screen_name"] as? String
+            account.avatar_large = userInfoDict["avatar_large"] as? String
+            
+            //将account进行保存
+            account.saveUserAccount()
+            
+            //将account单例赋值
+            UserAccountViewModel.shareInstance.account = account
+            
+            //退出当前控制器
+            self.dismiss(animated: false, completion: {
+                //显示欢迎界面
+                UIApplication.shared.keyWindow?.rootViewController = WelcomeViewController()
+            })
+            
+        }
+        
+    }
+    
     
 }
 

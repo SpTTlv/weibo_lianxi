@@ -10,6 +10,12 @@
 		B2E1376976FAF217C697D7A5 /* Pods_02__SwiftTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 326E62345D8AAB97341F3551 /* Pods_02__SwiftTests.framework */; };
 		C9155798E9E60C92A8C19649 /* Pods_02__SwiftUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9EA088F9D390C051F3CB7DC /* Pods_02__SwiftUITests.framework */; };
 		CFCE3E9CDBDEF05FBD072B2B /* Pods_02__Swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BE1E5FE77A85C489702AACD /* Pods_02__Swift.framework */; };
+		E450D49D1E690A1B003A19E7 /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = E450D49C1E690A1B003A19E7 /* Common.swift */; };
+		E450D49F1E691641003A19E7 /* UserAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = E450D49E1E691641003A19E7 /* UserAccount.swift */; };
+		E450D4A11E694B6B003A19E7 /* UserAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E450D4A01E694B6B003A19E7 /* UserAccountViewModel.swift */; };
+		E450D4A51E695255003A19E7 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E450D4A31E695255003A19E7 /* WelcomeViewController.swift */; };
+		E450D4A61E695255003A19E7 /* WelcomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E450D4A41E695255003A19E7 /* WelcomeViewController.xib */; };
+		E450D4E31E697CD2003A19E7 /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = E450D4E21E697CD2003A19E7 /* Status.swift */; };
 		E4583C011E66BBDE0033897C /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4583C001E66BBDE0033897C /* BaseViewController.swift */; };
 		E4583C031E66BFC80033897C /* VisitorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4583C021E66BFC80033897C /* VisitorView.swift */; };
 		E4583C051E66BFDB0033897C /* VisitorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4583C041E66BFDB0033897C /* VisitorView.xib */; };
@@ -67,6 +73,12 @@
 		9FAA3CC9B9B947C97B3C90F4 /* Pods-02微博SwiftUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-02微博SwiftUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-02微博SwiftUITests/Pods-02微博SwiftUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		A9DC9C97A8761CABA74EAF15 /* Pods-02微博SwiftTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-02微博SwiftTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-02微博SwiftTests/Pods-02微博SwiftTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D9EA088F9D390C051F3CB7DC /* Pods_02__SwiftUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_02__SwiftUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E450D49C1E690A1B003A19E7 /* Common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
+		E450D49E1E691641003A19E7 /* UserAccount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAccount.swift; sourceTree = "<group>"; };
+		E450D4A01E694B6B003A19E7 /* UserAccountViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAccountViewModel.swift; sourceTree = "<group>"; };
+		E450D4A31E695255003A19E7 /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
+		E450D4A41E695255003A19E7 /* WelcomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WelcomeViewController.xib; sourceTree = "<group>"; };
+		E450D4E21E697CD2003A19E7 /* Status.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Status.swift; sourceTree = "<group>"; };
 		E4583C001E66BBDE0033897C /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		E4583C021E66BFC80033897C /* VisitorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisitorView.swift; sourceTree = "<group>"; };
 		E4583C041E66BFDB0033897C /* VisitorView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VisitorView.xib; sourceTree = "<group>"; };
@@ -154,6 +166,23 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		E450D4A21E695240003A19E7 /* Welcome */ = {
+			isa = PBXGroup;
+			children = (
+				E450D4A31E695255003A19E7 /* WelcomeViewController.swift */,
+				E450D4A41E695255003A19E7 /* WelcomeViewController.xib */,
+			);
+			path = Welcome;
+			sourceTree = "<group>";
+		};
+		E450D4E11E697CB5003A19E7 /* HomeModel */ = {
+			isa = PBXGroup;
+			children = (
+				E450D4E21E697CD2003A19E7 /* Status.swift */,
+			);
+			path = HomeModel;
+			sourceTree = "<group>";
+		};
 		E4583BFF1E66BBCB0033897C /* Visitor */ = {
 			isa = PBXGroup;
 			children = (
@@ -186,8 +215,10 @@
 		E45CEEF21E682442002B6C44 /* OAuth */ = {
 			isa = PBXGroup;
 			children = (
-				E45CEEF31E68244F002B6C44 /* OAuthViewController.swift */,
 				E45CEEF41E68244F002B6C44 /* OAuthViewController.xib */,
+				E45CEEF31E68244F002B6C44 /* OAuthViewController.swift */,
+				E450D49E1E691641003A19E7 /* UserAccount.swift */,
+				E450D4A01E694B6B003A19E7 /* UserAccountViewModel.swift */,
 			);
 			path = OAuth;
 			sourceTree = "<group>";
@@ -269,6 +300,7 @@
 		E4BBE8A51E6673C100B7D273 /* Home(首页) */ = {
 			isa = PBXGroup;
 			children = (
+				E450D4E11E697CB5003A19E7 /* HomeModel */,
 				E45CEEE41E67B5E0002B6C44 /* UIPopover */,
 				E4BBE8A61E6673C100B7D273 /* HomeViewController.swift */,
 				E4BBE8B51E66754E00B7D273 /* Home.storyboard */,
@@ -279,6 +311,7 @@
 		E4BBE8A71E6673C100B7D273 /* Main(主要) */ = {
 			isa = PBXGroup;
 			children = (
+				E450D4A21E695240003A19E7 /* Welcome */,
 				E45CEEF21E682442002B6C44 /* OAuth */,
 				E4583BFF1E66BBCB0033897C /* Visitor */,
 				E4BBE8A81E6673C100B7D273 /* MainViewController.swift */,
@@ -311,6 +344,7 @@
 				E45CEEEF1E67FBFA002B6C44 /* NetWorkTools */,
 				E4BBE8C01E66776700B7D273 /* Category */,
 				E45CEEE91E67B66C002B6C44 /* TitleButton.swift */,
+				E450D49C1E690A1B003A19E7 /* Common.swift */,
 			);
 			path = "Tools(工具类)";
 			sourceTree = "<group>";
@@ -445,6 +479,7 @@
 				E4BBE87C1E66739A00B7D273 /* Assets.xcassets in Resources */,
 				E4BBE8B91E66755B00B7D273 /* Message.storyboard in Resources */,
 				E4583C051E66BFDB0033897C /* VisitorView.xib in Resources */,
+				E450D4A61E695255003A19E7 /* WelcomeViewController.xib in Resources */,
 				E4BBE87A1E66739A00B7D273 /* Main.storyboard in Resources */,
 				E4BBE8B71E66754E00B7D273 /* Home.storyboard in Resources */,
 				E4BBE8BE1E66757C00B7D273 /* Profile.storyboard in Resources */,
@@ -612,7 +647,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E450D49D1E690A1B003A19E7 /* Common.swift in Sources */,
+				E450D4A51E695255003A19E7 /* WelcomeViewController.swift in Sources */,
+				E450D4E31E697CD2003A19E7 /* Status.swift in Sources */,
 				E45CEEEC1E67BEC0002B6C44 /* XLPresentationController.swift in Sources */,
+				E450D49F1E691641003A19E7 /* UserAccount.swift in Sources */,
 				E4BBE8B41E6673C100B7D273 /* ProfileViewController.swift in Sources */,
 				E4BBE8751E66739A00B7D273 /* AppDelegate.swift in Sources */,
 				E45CEEE31E67B452002B6C44 /* UIBarButtonItem+Extension.swift in Sources */,
@@ -623,6 +662,7 @@
 				E4BBE8B01E6673C100B7D273 /* HomeViewController.swift in Sources */,
 				E4BBE8B11E6673C100B7D273 /* MainViewController.swift in Sources */,
 				E45CEEEE1E67E8E1002B6C44 /* PopoverAnimator.swift in Sources */,
+				E450D4A11E694B6B003A19E7 /* UserAccountViewModel.swift in Sources */,
 				E4583C011E66BBDE0033897C /* BaseViewController.swift in Sources */,
 				E4583C031E66BFC80033897C /* VisitorView.swift in Sources */,
 				E4BBE8B31E6673C100B7D273 /* MessageViewController.swift in Sources */,

@@ -10,12 +10,13 @@ import UIKit
 
 class BaseViewController: UITableViewController {
 
-    var isLogin : Bool = false
+    var isLogin : Bool = UserAccountViewModel.shareInstance.isLogin
     
     lazy var visitorView : VisitorView = VisitorView.visitorView()
     
     // MARK:- 重写系统回调
     override func loadView() {
+        
         isLogin ? super.loadView() : setupVisitorView()
     }
     

@@ -18,19 +18,19 @@ class HomeViewController: BaseViewController {
         self?.titleBtn.isSelected = isPresented
     }
     
+    lazy var statusArr : [Status] = [Status]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         visitorView.addRotationAnim()
         
+        //设置导航栏内容
         setupNavigationBar()
         
+        //请求数据
+        loadStatuses()
         
-        NetWorkTools.shareInstance.request(methodType: .POST,urlString: "http://httpbin.org/get", params: ["name":"zhangsan" as AnyObject]) { (result, error) in
-
-
-        }
         
     }
     
@@ -74,7 +74,30 @@ extension HomeViewController{
     
 }
 
-
+// MARK:- 请求数据
+extension HomeViewController{
+    
+    func loadStatuses() {
+        NetWorkTools.shareInstance.loadHomeStatus { (result, error) in
+            
+            //错误校验
+            if error != nil{
+                return
+            }
+            
+            guard let resultArray = result else{
+                return
+            }
+            
+            for statusDic in resultArray {
+                let statusItem = Status(dict: statusDic)
+                self.statusArr.append(statusItem)
+            }
+            
+        }
+    }
+    
+}
 
 
 
