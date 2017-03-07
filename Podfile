@@ -9,6 +9,7 @@ pod 'AFNetworking'
 pod 'SDWebImage'
 pod 'SnapKit'
 pod 'SVProgressHUD'
+pod 'ReactiveCocoa', '~> 5.0.0'
 
   # Pods for 02微博Swift
 

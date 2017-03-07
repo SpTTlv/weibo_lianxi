@@ -27,6 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         UINavigationBar.appearance().tintColor = UIColor.orange
         
+        
         //window
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = defaultViewController

@@ -7,6 +7,7 @@
 //
 
 import AFNetworking
+import ReactiveSwift
 
 //定义枚举类型
 enum RequestType : String{
@@ -18,10 +19,10 @@ class NetWorkTools: AFHTTPSessionManager {
         //let 是线程安全的
     static let shareInstance : NetWorkTools  = {
     
-        let tools = NetWorkTools()
+        let tools = NetWorkTools(baseURL: NSURL(string:"") as URL?, sessionConfiguration: nil)
         tools.responseSerializer.acceptableContentTypes?.insert("text/html")
         tools.responseSerializer.acceptableContentTypes?.insert("text/plain")
-
+        
         return tools
     }()
     
@@ -65,6 +66,8 @@ extension NetWorkTools{
             
             finished(result as? [String : AnyObject],error)
         }
+        
+    
         
     }
     
@@ -110,6 +113,29 @@ extension NetWorkTools{
             
             
         }
+        
+    }
+    
+}
+
+// MARK:- RAC方法
+extension NetWorkTools{
+    
+    func rac_request(){
+        print("rac_request")
+        
+        let (signal, observer) = Signal<String, NSError>.pipe()
+        
+        signal.observe(Signal.Observer{
+            
+            print("hahah")
+        })
+        
+        observer.send(value: "a")     // Prints A
+        observer.send(value: "b")     // Prints B
+        observer.send(value: "c")     // Prints C
+
+
         
     }
     

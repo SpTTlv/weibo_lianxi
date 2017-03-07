@@ -21,6 +21,8 @@ class WelcomeViewController: UIViewController {
         super.viewDidLoad()
         //设置头像
         let profileUrl = UserAccountViewModel.shareInstance.account?.avatar_large
+        // ?? : 如果??前面的可选类型有值,那么将前面的可选类型进行解包并且赋值
+        // 如果??前面的可选类型为nil,那么直接使用??后面的值
         let url  = NSURL(string: profileUrl ?? "")
         iconView.sd_setImage(with: url as URL?, placeholderImage: UIImage(named:"avatar_default_big"))
 

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class HomeViewController: BaseViewController {
     
@@ -18,7 +19,7 @@ class HomeViewController: BaseViewController {
         self?.titleBtn.isSelected = isPresented
     }
     
-    lazy var statusArr : [Status] = [Status]()
+    lazy var statusArr : [StatusViewModel] = [StatusViewModel]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +32,8 @@ class HomeViewController: BaseViewController {
         //请求数据
         loadStatuses()
         
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 200
         
     }
     
@@ -82,6 +85,7 @@ extension HomeViewController{
             
             //错误校验
             if error != nil{
+                SVProgressHUD.showInfo(withStatus: "网络不给力")
                 return
             }
             
@@ -91,11 +95,30 @@ extension HomeViewController{
             
             for statusDic in resultArray {
                 let statusItem = Status(dict: statusDic)
-                self.statusArr.append(statusItem)
+                self.statusArr.append(StatusViewModel(status: statusItem))
             }
             
+            //刷新表格
+            self.tableView.reloadData()
         }
     }
+    
+}
+
+// MARK:- tableView的数据源方法
+extension HomeViewController {
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return statusArr.count
+    }
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "HomeCell") as! HomeViewCell
+
+        cell.viewModel = statusArr[indexPath.row]
+       
+        return cell
+    }
+    
     
 }
 
